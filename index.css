@@ -35,12 +35,20 @@ body {
   gap: 10px;
 }
 
+.g20 {
+  gap: 20px;
+}
+
 .full-w {
   width: 100%;
 }
 
 .aictr {
   align-items: center;
+}
+
+.flexing {
+  flex: 1;
 }
 
 .jcctr {
@@ -111,6 +119,13 @@ body {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
+.frame.mini {
+  height: auto;
+  width: calc(100% - 40px);
+
+  padding: 10px 20px;
+}
+
 .audio-player-wrapper {
   width: calc(100% - 200px - 500px);
   height: 500px;
@@ -127,12 +142,25 @@ body {
   transition: opacity 0.4s 0.2s;
 }
 
+.modifier-slider {
+  filter: hue-rotate(90deg);
+}
+
 .app-wrapper.in > .audio-player-wrapper {
   opacity: 1;
 }
 
 .coll {
   flex-direction: column;
+}
+
+.frame button {
+  min-width: 130px;
+}
+
+.slider-value {
+  width: 50px;
+  text-align: right;
 }
 
 .audio-frame {
@@ -306,4 +334,22 @@ body {
 
 .loading .hide {
   display: initial;
+}
+
+.credits {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+
+  padding: 10px 10px;
+
+  font-weight: bold;
+  font-style: italic;
+
+  font-size: 15px;
+}
+
+.credits:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }

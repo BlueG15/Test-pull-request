@@ -5,6 +5,14 @@ const audioSrc = {
   modified: new CustomAudio(),
 };
 
+const iHaveToDoItLikeThis = {
+  dontLaugh: () => {},
+  imNewToThis: () => {},
+  leniencyModifer: 3,
+  currentFile: null,
+  imDoingIt: false,
+};
+
 /**
  * Generate a random string
  * @param {number} length Length of ID
@@ -68,6 +76,30 @@ function slideAudioPanel(show = true) {
   }
 }
 
+function downloadAudio() {
+  const { currentFile, leniencyModifer } = iHaveToDoItLikeThis;
+
+  const name = currentFile.name.split(".");
+
+  audioSrc.modified.download(
+    name.slice(0, name.length - 1).join(".") + "-leniency-" + leniencyModifer
+  );
+}
+
+function resetAudio() {
+  // const self = document.getElementById("reset-audio-btt");
+
+  const { currentFile } = iHaveToDoItLikeThis;
+
+  console.log(this.target);
+  iHaveToDoItLikeThis.imNewToThis();
+  setMetaInfoInnerHTML(FileInfo(currentFile?.name, currentFile?.size));
+
+  audioSrc.modified.pause();
+
+  // self?.remove();
+}
+
 function getInput() {
   return document.getElementById("audio-input");
 }
@@ -101,6 +133,13 @@ function handleInputChange() {
       changeButtonState("Change file");
       const size = Math.round(file.size / 1000).toLocaleString() + " KB";
       setMetaInfoInnerHTML(FileInfo(file.name, size));
+
+      iHaveToDoItLikeThis.currentFile = {
+        name: file.name,
+        size: size,
+      };
+
+      iHaveToDoItLikeThis.imNewToThis();
     });
   };
 
@@ -109,21 +148,24 @@ function handleInputChange() {
 }
 
 function applyFFTOnOriginal() {
-  if (!audioSrc.original.__CURRENT_BUFFER__) {
-    return [];
-  }
+  if (iHaveToDoItLikeThis.imDoingIt) return;
+
+  if (!audioSrc.original.__CURRENT_BUFFER__) return;
 
   document.body.classList.add("loading");
 
   const buffer = audioSrc.original.__CURRENT_BUFFER__;
   const worker = new Worker("./worker/applyFFTtoOriginal.js");
+  const _ = iHaveToDoItLikeThis.leniencyModifer;
 
   if (buffer.numberOfChannels === 1) {
     const b = buffer.getChannelData(0);
-    worker.postMessage([b, b]);
+    worker.postMessage([b, b, _]);
   } else {
-    worker.postMessage([buffer.getChannelData(0), buffer.getChannelData(1)]);
+    worker.postMessage([buffer.getChannelData(0), buffer.getChannelData(1), _]);
   }
+
+  iHaveToDoItLikeThis.imDoingIt = true;
 
   worker.onmessage = (e) => {
     document.body.classList.remove("loading");
@@ -139,6 +181,10 @@ function applyFFTOnOriginal() {
     edittedBuffer.copyToChannel(new Float32Array(resRight), 1);
 
     audioSrc.modified.play(edittedBuffer);
+    setMetaInfoInnerHTML(FileDone(iHaveToDoItLikeThis.currentFile.name, _));
+    iHaveToDoItLikeThis.dontLaugh();
+
+    iHaveToDoItLikeThis.imDoingIt = false;
   };
 }
 
@@ -153,8 +199,61 @@ function init() {
   modifiedPlayer.classList.add("modified");
 
   const wrapper = document.getElementById("audio-player-wrapper");
-  wrapper.append(originalPlayer, modifiedPlayer);
-  // wrapper.append(originalPlayer);
+  // wrapper.append(originalPlayer, modifiedPlayer);
+  wrapper.append(originalPlayer);
+
+  const sliderWrapper = document.createElement("div");
+  const slider = document.createElement("input");
+  const sliderValue = document.createElement("h3");
+  const initialValue = iHaveToDoItLikeThis.leniencyModifer;
+
+  sliderWrapper.className = "flex aictr jcctr g20 flexing frame mini";
+  sliderValue.className = "slider-value";
+
+  slider.type = "range";
+  slider.min = 1;
+  slider.max = 100;
+  slider.step = 0.2;
+  slider.className = "flexing modifier-slider";
+
+  slider.value = initialValue;
+  sliderValue.innerText = initialValue;
+
+  slider.oninput = (e) => {
+    if (iHaveToDoItLikeThis.imDoingIt) {
+      return;
+    }
+
+    const v = Math.round(e.target.value * 10) / 10;
+    sliderValue.innerText = v;
+    iHaveToDoItLikeThis.leniencyModifer = v;
+  };
+
+  sliderWrapper.append("Leniency modifer", slider, sliderValue);
+
+  iHaveToDoItLikeThis.dontLaugh = () => {
+    wrapper.append(modifiedPlayer);
+    sliderWrapper.remove();
+  };
+  iHaveToDoItLikeThis.imNewToThis = () => {
+    modifiedPlayer.remove();
+    wrapper.append(sliderWrapper);
+  };
 
   setMetaInfoInnerHTML(MetaPanelWelcome());
+}
+
+function showGroup() {
+  const name = [
+    "Thành viên nhóm 1",
+    "[2312046]  BÙI NGỌC MINH",
+    "[2312865]  BÙI THANH QUÍ",
+    "[2312329]  BÙI TRỌNG NGUYÊN",
+    "[2313722]  BÙI VŨ MINH TRỰT",
+    "[2313865]  CAO ĐOÀN THẢO VÂN",
+    "[2310629]  CAO PHÁT ĐẠT",
+    "[2313420]  CAO SỸ VĂN TIẾN"
+  ];
+
+  alert(name.join("\n"));
 }
