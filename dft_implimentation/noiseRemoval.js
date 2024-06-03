@@ -12,9 +12,14 @@ function findClosestPowerOfTwo(a) {
 /**
  * Perform stuff on stuff
  * @param {Float32Array} PCMRAW Channel
+ * @param {number} leniency You get it
  * @returns {Promise<Float32Array>}
  */
-const fftRemoveOnChannel = (PCMRAW, leniency = 3) => {
+
+const fftRemoveOnChannel = (PCMRAW, leniency) => {
+
+  console.log(`received leniency = ${leniency}`);
+
   const PCM = [
     ...PCMRAW,
     ...new Array(findClosestPowerOfTwo(PCMRAW.length) - PCMRAW.length).fill(0),
@@ -32,7 +37,8 @@ const fftRemoveOnChannel = (PCMRAW, leniency = 3) => {
       return 1;
     });
     filtered = filtered.map((a, i) => {
-      if(complex.magnitude(fftRes[i]) < maxMagnitude / leniency) return 0; //filters out anything too low
+      if (complex.magnitude(fftRes[i]) < maxMagnitude / leniency) return 0;
+      //filters out anything too low
       return a;
     });
 
