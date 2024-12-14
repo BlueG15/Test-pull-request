@@ -30,6 +30,8 @@ Nguyễn Đăng Hiên - 2310936
 ## Sumary
 
 This big excercise concerns the 2D Cutting stock problem, which aims to find a cutting patterns given a set of stocks and a set of items that reduces the total cost or the amount of stock sheets required. 
+
+
 For this big excercise, our group have implemented two main algorithms for solving the 2D Cutting stock problem:
 + Combination heuristic (combining Best-fit and First-fit):
   Our group leverages the strength of both algorthms and implemented this solution with the aim to compute a heuristic solution better than Best-fit. The results shows a considerable improvement over First-fit.
@@ -77,8 +79,17 @@ generation, totaling 50 different environment set ups. The cvs data for this ben
 ---
 The following graphs visualizes the data more clearly:
 ![compare_fitness](bench_mark/comparison_figures/compare_fitness.png)
-![compare_waste](bench_mark/comparison_figures/compare_waste.png)
+![compare_waste](bench_mark/comparison_figures/compare_waste_rates.png)
 ![compare_time](bench_mark/comparison_figures/compare_time.png)
+---
+## Conclusion and remarks
+
+Combination heuristic performs consistently better than the other two algorithms,
+with RL following close behind on every batch. This may due to our RL model unable to choose
+the stock and items itself and delegates this task to a similar heuristic. More training time for
+the RL model should also provides better results.
+
+
 
 
 
