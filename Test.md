@@ -26,7 +26,7 @@ Lương Minh Thuận - 2313348
 Nguyễn Đăng Hiên - 2310936
 
 
-
+---
 ## Sumary
 
 This big excercise concerns the 2D Cutting stock problem, which aims to find a cutting patterns given a set of stocks and a set of items that reduces the total cost or the amount of stock sheets required. 
@@ -75,7 +75,10 @@ generation, totaling 50 different environment set ups. The cvs data for this ben
 | \textbf{4}                     | 0.0829                   | 0.1590                      | 0.9235                | 0.8681                   | 0.6262             | 39.5981               |
 | \textbf{5}                     | 0.0730                   | 0.1647                      | 0.9320                | 0.8629                   | 0.6247             | 39.4916               |
 ---
+The following graphs visualizes the data more clearly:
 ![compare_fitness](bench_mark/comparison_figures/compare_fitness.png)
+![compare_waste](bench_mark/comparison_figures/compare_waste.png)
+![compare_time](bench_mark/comparison_figures/compare_time.png)
 
 
 
