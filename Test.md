@@ -51,13 +51,13 @@ generation, totaling 50 different environment set ups. The cvs data for this ben
 
 ---
 ## Greedy Policy (for comparison)
-| **\rowcolor{gray!30} 	extbf{No.}** | **\textbf{Best waste rate}** | **\textbf{Average waste rate}** | **\textbf{Best fitness}** | **\textbf{Average fitness}** | **\textbf{Best time}** | **\textbf{Average time}** |
+| **No.** | **Best waste rate** | **Average waste rate** | **Best fitness** | **Average fitness** | **Best time** | **Average time** |
 |------------------------------------|------------------------------|---------------------------------|---------------------------|------------------------------|------------------------|---------------------------|
-| \textbf{1}                         | 0.1714                       | 0.3373                          | 0.8537                    | 0.7602                       | 0.9387                 | 19.1134                   |
-| \textbf{2}                         | 0.1477                       | 0.2924                          | 0.8713                    | 0.7814                       | 1.0790                 | 46.1255                   |
-| \textbf{3}                         | 0.1175                       | 0.8661                          | 0.8949                    | 0.6820                       | 0.0040                 | 77.9725                   |
-| \textbf{4}                         | 0.1188                       | 0.3385                          | 0.8938                    | 0.7587                       | 0.1318                 | 18.9791                   |
-| \textbf{5}                         | 0.1808                       | 0.2673                          | 0.8469                    | 0.7912                       | 0.2565                 | 17.9854                   |
+| **1**                         | 0.1714                       | 0.3373                          | 0.8537                    | 0.7602                       | 0.9387                 | 19.1134                   |
+| **2**                         | 0.1477                       | 0.2924                          | 0.8713                    | 0.7814                       | 1.0790                 | 46.1255                   |
+| **3**                         | 0.1175                       | 0.8661                          | 0.8949                    | 0.6820                       | 0.0040                 | 77.9725                   |
+| **4**                         | 0.1188                       | 0.3385                          | 0.8938                    | 0.7587                       | 0.1318                 | 18.9791                   |
+| **5**                         | 0.1808                       | 0.2673                          | 0.8469                    | 0.7912                       | 0.2565                 | 17.9854                   |
 ---
 ## Combination heuristic
 | **\rowcolor{gray!30} 	extbf{No.}** | **\textbf{Best waste rate}** | **\textbf{Average waste rate}** | **\textbf{Best fitness}** | **\textbf{Average fitness}** | **\textbf{Best time}** | **\textbf{Average time}** |
@@ -95,6 +95,10 @@ Combination heuristic performs consistently better than the other two algorithms
 with RL following close behind on every batch. This may due to our RL model unable to choose
 the stock and items itself and delegates this task to a similar heuristic. More training time for
 the RL model should also provides better results.
+
+---
+## Additional materials
+Our group have included a few visualizations of the item-placing actions of the policies in the folder "demo" in .gif files
 
 
 
