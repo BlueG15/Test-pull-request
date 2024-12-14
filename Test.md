@@ -68,7 +68,7 @@ generation, totaling 50 different environment set ups. The cvs data for this ben
 | **4**                         | 0.0409                       | 0.1138                          | 0.9607                    | 0.9002                       | 0.3321                 | 7.4599                    |
 | **5**                         | 0.0538                       | 0.1092                          | 0.9490                    | 0.9030                       | 0.5570                 | 8.2988                    |
 ---
-## Table: Reinforcement Learning (RL)
+## Reinforcement Learning (RL)
 | **No.** | **Best waste rate** | **Average waste rate** | **Best fitness** | **Average fitness** | **Best time** | **Average time** |
 |------------------------------------|------------------------------|---------------------------------|---------------------------|------------------------------|------------------------|---------------------------|
 | **1**                     | 0.0804                   | 0.2132                      | 0.9256                | 0.8365                   | 2.9585             | 37.5355               |
