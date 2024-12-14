@@ -78,12 +78,19 @@ generation, totaling 50 different environment set ups. The cvs data for this ben
 | \textbf{5}                     | 0.0730                   | 0.1647                      | 0.9320                | 0.8629                   | 0.6247             | 39.4916               |
 ---
 The following graphs visualizes the data more clearly:
+
+
 ![compare_fitness](bench_mark/comparison_figures/compare_fitness.png)
+
+
 ![compare_waste](bench_mark/comparison_figures/compare_waste_rates.png)
+
+
 ![compare_time](bench_mark/comparison_figures/compare_time.png)
+
+
 ---
 ## Conclusion and remarks
-
 Combination heuristic performs consistently better than the other two algorithms,
 with RL following close behind on every batch. This may due to our RL model unable to choose
 the stock and items itself and delegates this task to a similar heuristic. More training time for
