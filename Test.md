@@ -32,6 +32,8 @@ For this big excercise, our group have implemented two main algorithms for solvi
 + Reinforcement learning approach:
   Our RL agent was trained using PPO and tasked with picking the position to cut a given item into a given stock. While what item and stock to cut is delegated to a heuristic similar to the one above.
   In practice, our RL agent produces fairly good results compared to First-fit.
+
+
 In addition, our group also developed Best-fit and First-fit (Greedy) by themselves for comparison, and developped a further optimization algorithm on the results using simplex.
 The code for these can be found in the folder "additional_policies" and "simplex_application".
 
