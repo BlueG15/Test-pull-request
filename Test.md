@@ -43,7 +43,6 @@ The code for these can be found in the folder "additional_policies" and "simplex
 
 ---
 ## Testing (Bench marking) results
----
 The following tables presented the results after bench marking 3 different algorithms using 5
 batches of randomized environments. Each batch contains 10 different seeds for environment
 generation, totaling 50 different environment set ups. The cvs data for this bench mark can be found in the folder "bench_mark".
@@ -76,6 +75,7 @@ generation, totaling 50 different environment set ups. The cvs data for this ben
 | \textbf{4}                     | 0.0829                   | 0.1590                      | 0.9235                | 0.8681                   | 0.6262             | 39.5981               |
 | \textbf{5}                     | 0.0730                   | 0.1647                      | 0.9320                | 0.8629                   | 0.6247             | 39.4916               |
 ---
+![compare_fitness](bench_mark/comparison_figures/compare_fitness.png)
 
 
 
